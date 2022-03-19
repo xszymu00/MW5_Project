@@ -1,6 +1,8 @@
+using FirstWebApi.Database;
 using FirstWebApi.DTOs;
+using FirstWebApi.Models;
 
-namespace FirstWebApi;
+namespace FirstWebApi.Services;
 
 public class ManufacturerService : IManufacturerService
 {
@@ -21,8 +23,13 @@ public class ManufacturerService : IManufacturerService
         return Db.GetAllManufacturers();
     }
 
-    public void AddManufacturer(BasicManufacturerDto manDto)
+    public void AddManufacturer(BasicManufacturerDto manufacturerDto)
     {
-        Db.AddManufacturer(manDto);
+        var manufacturer = new Manufacturer();
+        manufacturer.Name = manufacturerDto.Name;
+        manufacturer.Country = manufacturerDto.Country;
+        manufacturer.Description = manufacturerDto.Description;
+        manufacturer.Logo = manufacturerDto.Logo;
+        Db.AddManufacturer(manufacturer);
     }
 }

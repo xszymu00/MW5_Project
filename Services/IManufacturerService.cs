@@ -1,6 +1,7 @@
 using FirstWebApi.DTOs;
+using FirstWebApi.Models;
 
-namespace FirstWebApi;
+namespace FirstWebApi.Services;
 
 public interface IManufacturerService
 {

@@ -1,4 +1,6 @@
 using FirstWebApi.DTOs;
+using FirstWebApi.Models;
+using FirstWebApi.Services;
 using Microsoft.AspNetCore.Mvc;
 namespace FirstWebApi.Controllers;
 

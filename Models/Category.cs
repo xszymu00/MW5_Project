@@ -1,6 +1,4 @@
-using System.ComponentModel.DataAnnotations;
-
-namespace FirstWebApi;
+namespace FirstWebApi.Models;
 
 public class Category
 {

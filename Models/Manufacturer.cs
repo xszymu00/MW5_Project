@@ -1,4 +1,4 @@
-namespace FirstWebApi;
+namespace FirstWebApi.Models;
 
 public class Manufacturer
 {

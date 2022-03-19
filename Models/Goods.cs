@@ -1,4 +1,4 @@
-namespace FirstWebApi;
+namespace FirstWebApi.Models;
 
 public class Goods
 {
@@ -15,7 +15,7 @@ public class Goods
         PcsInStock = pcsInStock;
     }
 
-    public int Id { get; init; }
+    public int Id { get; set; }
     public string Name { get; set; } = String.Empty;
     public int Photo { get; set; }
     public string? Description { get; set; }

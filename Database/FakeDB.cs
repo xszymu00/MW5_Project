@@ -1,6 +1,6 @@
-using FirstWebApi.DTOs;
+using FirstWebApi.Models;
 
-namespace FirstWebApi;
+namespace FirstWebApi.Database;
 
 public class FakeDb
 {
@@ -15,7 +15,7 @@ public class FakeDb
         {
             new Category
             {
-                Id = 1,
+                Id = 0,
                 Name = "Sneakers"
             }
         };
@@ -24,7 +24,7 @@ public class FakeDb
         {
             new Feedback
             {
-                Id = 1,
+                Id = 0,
                 Mark = 3,
                 TextFeedback = "I really like them"
             }
@@ -34,7 +34,7 @@ public class FakeDb
         {
             new Manufacturer
             {
-                Id = 1,
+                Id = 0,
                 Country = "Czechia",
                 Description = "Czech Sneakers Manufacturer",
                 Logo = 3,
@@ -47,7 +47,7 @@ public class FakeDb
         {
             new Goods
             {
-                Id = 1,
+                Id = 0,
                 Description = "Nice Sneakers",
                 Manufacturer = Manufacturers[0],
                 Feedback = Feedbacks,
@@ -74,6 +74,24 @@ public class FakeDb
     public void AddGoods(Goods goods)
     {
         GoodsList.Add(goods);
+    }
+
+    public void DeleteGoods(int id)
+    {
+        GoodsList.Remove(GoodsList.Where(goods => goods.Id == id).First());
+    }
+
+    public void UpdateGoods(int id, Goods goods)
+    {
+        DeleteGoods(id);
+        GoodsList.Add(goods);
+        
+    }
+
+    public int getGoodsId()
+    {
+        int result = GoodsList.Last().Id+1;
+        return result;
     }
 
     public Category GetCategoryById(int id)
@@ -119,13 +137,8 @@ public class FakeDb
         return Manufacturers;
     }
 
-    public void AddManufacturer(BasicManufacturerDto manufacturerDto)
+    public void AddManufacturer(Manufacturer manufacturer)
     {
-        var manufacturer = new Manufacturer();
-        manufacturer.Name = manufacturerDto.Name;
-        manufacturer.Country = manufacturerDto.Country;
-        manufacturer.Description = manufacturerDto.Description;
-        manufacturer.Logo = manufacturerDto.Logo;
         Manufacturers.Add(manufacturer);
     }
 }

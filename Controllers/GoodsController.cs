@@ -1,4 +1,6 @@
 using FirstWebApi.DTOs;
+using FirstWebApi.Models;
+using FirstWebApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FirstWebApi.Controllers;
@@ -36,6 +38,20 @@ public class GoodsController : Controller
     public async Task<ActionResult> AddGoods([FromBody] BasicGoodsDto goodsDto)
     {
         goodsService.AddGoods(goodsDto);
+        return Ok();
+    }
+
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult> UpdateGoods([FromRoute] int id, [FromBody] BasicGoodsDto goodsDto)
+    {
+        goodsService.UpdateGoods(id,goodsDto);
+        return Ok();
+    }
+
+    [HttpDelete("{id:int}")]
+    public async Task<ActionResult> DeleteGoods([FromRoute] int id)
+    {
+        goodsService.DeleteGoods(id);
         return Ok();
     }
 }
