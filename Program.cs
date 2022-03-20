@@ -1,7 +1,7 @@
 
-using FirstWebApi;
-using FirstWebApi.Database;
-using FirstWebApi.Services;
+using MW5_Project;
+using MW5_Project.Database;
+using MW5_Project.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

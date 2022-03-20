@@ -1,8 +1,8 @@
-using FirstWebApi.Database;
-using FirstWebApi.DTOs;
-using FirstWebApi.Models;
+using MW5_Project.Database;
+using MW5_Project.DTOs;
+using MW5_Project.Models;
 
-namespace FirstWebApi.Services;
+namespace MW5_Project.Services;
 
 public class ManufacturerService : IManufacturerService
 {
@@ -26,10 +26,28 @@ public class ManufacturerService : IManufacturerService
     public void AddManufacturer(BasicManufacturerDto manufacturerDto)
     {
         var manufacturer = new Manufacturer();
+        manufacturer.Id = Db.GetManufacturersId();
         manufacturer.Name = manufacturerDto.Name;
         manufacturer.Country = manufacturerDto.Country;
         manufacturer.Description = manufacturerDto.Description;
         manufacturer.Logo = manufacturerDto.Logo;
         Db.AddManufacturer(manufacturer);
+    }
+
+    public void UpdateManufacturer(int id, BasicManufacturerDto manufacturerDto)
+    {
+        var manufacturer = new Manufacturer();
+        manufacturer.Id = id;
+        manufacturer.Name = manufacturerDto.Name;
+        manufacturer.Country = manufacturerDto.Country;
+        manufacturer.Description = manufacturerDto.Description;
+        manufacturer.Logo = manufacturerDto.Logo;
+        Db.DeleteManufacturer(id);
+        Db.AddManufacturer(manufacturer);
+    }
+
+    public void DeleteManufacturer(int id)
+    {
+        Db.DeleteManufacturer(id);
     }
 }

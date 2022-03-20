@@ -1,9 +1,9 @@
-using FirstWebApi.DTOs;
-using FirstWebApi.Models;
-using FirstWebApi.Services;
 using Microsoft.AspNetCore.Mvc;
+using MW5_Project.DTOs;
+using MW5_Project.Models;
+using MW5_Project.Services;
 
-namespace FirstWebApi.Controllers;
+namespace MW5_Project.Controllers;
 
 
 [Route("/[controller]")]

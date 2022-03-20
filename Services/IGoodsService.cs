@@ -1,7 +1,7 @@
-using FirstWebApi.DTOs;
-using FirstWebApi.Models;
+using MW5_Project.DTOs;
+using MW5_Project.Models;
 
-namespace FirstWebApi.Services;
+namespace MW5_Project.Services;
 
 public interface IGoodsService
 {

@@ -1,18 +1,21 @@
-using FirstWebApi.DTOs;
-using FirstWebApi.Models;
-using FirstWebApi.Services;
 using Microsoft.AspNetCore.Mvc;
-namespace FirstWebApi.Controllers;
+using MW5_Project.DTOs;
+using MW5_Project.Models;
+using MW5_Project.Services;
+
+namespace MW5_Project.Controllers;
 
 [ApiController]
 [Route("/[controller]")]
-public class ManufacturerController:Controller
+public class ManufacturerController : Controller
 {
-    private readonly IManufacturerService ManufacturerService; 
+    private readonly IManufacturerService ManufacturerService;
+
     public ManufacturerController(IManufacturerService manufacturerService)
     {
         this.ManufacturerService = manufacturerService;
     }
+
     [HttpGet()]
     public async Task<ActionResult<List<Manufacturer>>> GetManufacturers()
     {
@@ -26,17 +29,31 @@ public class ManufacturerController:Controller
         var manufacturer = ManufacturerService.GetManufacturerById(id);
         if (manufacturer == null)
         {
-
             return NotFound();
         }
+
         return Ok((manufacturer));
     }
 
     [HttpPost("add")]
-    public async Task<ActionResult> AddGoods([FromBody] BasicManufacturerDto manufacturerDto)
+    public async Task<ActionResult> AddManufacturer([FromBody] BasicManufacturerDto manufacturerDto)
     {
         ManufacturerService.AddManufacturer(manufacturerDto);
         return Ok();
     }
-    
+
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult> UpdateManufacturer([FromRoute] int id,
+        [FromBody] BasicManufacturerDto manufacturerDto)
+    {
+        ManufacturerService.UpdateManufacturer(id, manufacturerDto);
+        return Ok();
+    }
+
+    [HttpDelete("{id:int}")]
+    public async Task<ActionResult> DeleteManufacturer([FromRoute] int id)
+    {
+        ManufacturerService.DeleteManufacturer(id);
+        return Ok();
+    }
 }

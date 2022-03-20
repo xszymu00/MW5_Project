@@ -1,4 +1,4 @@
-namespace FirstWebApi.DTOs;
+namespace MW5_Project.DTOs;
 
 public class BasicGoodsDto
 {

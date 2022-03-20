@@ -1,8 +1,8 @@
-using FirstWebApi.Database;
-using FirstWebApi.DTOs;
-using FirstWebApi.Models;
+using MW5_Project.Database;
+using MW5_Project.DTOs;
+using MW5_Project.Models;
 
-namespace FirstWebApi.Services;
+namespace MW5_Project.Services;
 
 public class GoodsService:IGoodsService
 {
@@ -27,7 +27,7 @@ public class GoodsService:IGoodsService
     public void AddGoods(BasicGoodsDto goodsDto)
     {
         Goods goods = new Goods();
-        goods.Id = Db.getGoodsId();
+        goods.Id = Db.GetGoodsId();
         goods.Name = goodsDto.Name;
         goods.Photo = goodsDto.Photo;
         goods.Price = goodsDto.Price;
@@ -47,7 +47,8 @@ public class GoodsService:IGoodsService
         goods.Weight = goodsDto.Weight;
         goods.PcsInStock = goodsDto.PcsInStock;
         goods.Description = goodsDto.Description;
-        Db.UpdateGoods(id,goods);
+        Db.DeleteGoods(id);
+        Db.AddGoods(goods);
     }
 
     public void DeleteGoods(int id)

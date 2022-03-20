@@ -1,4 +1,4 @@
-namespace FirstWebApi.Models;
+namespace MW5_Project.Models;
 
 public class Goods
 {

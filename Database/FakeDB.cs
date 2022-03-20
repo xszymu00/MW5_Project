@@ -1,6 +1,6 @@
-using FirstWebApi.Models;
+using MW5_Project.Models;
 
-namespace FirstWebApi.Database;
+namespace MW5_Project.Database;
 
 public class FakeDb
 {
@@ -62,7 +62,7 @@ public class FakeDb
 
     public Goods GetGoodsById(int id)
     {
-        var goods = GoodsList.FirstOrDefault(h => h.Id == id);
+        var goods = GoodsList.FirstOrDefault(goods1 => goods1.Id == id);
         return goods;
     }
 
@@ -78,26 +78,18 @@ public class FakeDb
 
     public void DeleteGoods(int id)
     {
-        GoodsList.Remove(GoodsList.Where(goods => goods.Id == id).First());
+        GoodsList.Remove(GetGoodsById(id));
     }
-
-    public void UpdateGoods(int id, Goods goods)
+    public int GetGoodsId()
     {
-        DeleteGoods(id);
-        GoodsList.Add(goods);
-        
-    }
-
-    public int getGoodsId()
-    {
-        int result = GoodsList.Last().Id+1;
-        return result;
+        int id = GoodsList.Last().Id+1;
+        return id;
     }
 
     public Category GetCategoryById(int id)
     {
-        var Category = Categories.FirstOrDefault(h => h.Id == id);
-        return Category;
+        var category = Categories.FirstOrDefault(category => category.Id == id);
+        return category;
     }
 
     public List<Category> GetAllCategories()
@@ -112,8 +104,8 @@ public class FakeDb
 
     public Feedback GetFeedabackById(int id)
     {
-        var Feedback = Feedbacks.FirstOrDefault(h => h.Id == id);
-        return Feedback;
+        var feedback = Feedbacks.FirstOrDefault(feedback => feedback.Id == id);
+        return feedback;
     }
 
     public List<Feedback> GetAllFeedbacks()
@@ -128,8 +120,8 @@ public class FakeDb
 
     public Manufacturer GetManufacturerById(int id)
     {
-        var Manufacturer = Manufacturers.FirstOrDefault(h => h.Id == id);
-        return Manufacturer;
+        var manufacturer = Manufacturers.FirstOrDefault(manufacturer =>  manufacturer.Id == id);
+        return manufacturer;
     }
 
     public List<Manufacturer> GetAllManufacturers()
@@ -140,5 +132,16 @@ public class FakeDb
     public void AddManufacturer(Manufacturer manufacturer)
     {
         Manufacturers.Add(manufacturer);
+    }
+
+    public void DeleteManufacturer(int id)
+    {
+        Manufacturers.Remove(GetManufacturerById(id));
+    }
+
+    public int GetManufacturersId()
+    {
+        int id = Manufacturers.Last().Id + 1;
+        return id;
     }
 }

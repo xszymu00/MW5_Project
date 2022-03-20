@@ -1,7 +1,7 @@
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FirstWebApi.Middleware;
+namespace MW5_Project.Middleware;
 
 public class ExceptionMiddleware
 {
